@@ -9,8 +9,13 @@ chrome.browserAction.onClicked.addListener(function (tab) {
       const injectedCode = `
         document.getElementsByClassName('sk-button')[1].click();
         setTimeout(function() {
-          document.getElementById('note-title-editor').value = "${title}";
-          document.getElementById('note-text-editor').value = "${url}";
+          var title = document.getElementById('note-title-editor');
+          title.value = "${title}";
+          title.dispatchEvent(new Event('change'));
+
+          var note = document.getElementById('note-text-editor');
+          note.value = "${url}";
+          note.dispatchEvent(new Event('change'));
         }, 100);
       `;
 
