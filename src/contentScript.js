@@ -7,13 +7,17 @@ chrome.runtime.onMessage.addListener((message) => {
 
   if (id !== 'CREATE_NOTE') return;
 
-  const titleEl = document.getElementById('note-title-editor');
+  document.getElementsByClassName('sk-button')[1].click();
 
-  titleEl.value = title;
-  titleEl.dispatchEvent(new Event('change'));
+  setTimeout(() => {
+    const titleEl = document.getElementById('note-title-editor');
 
-  const noteEl = document.getElementById('note-text-editor');
+    titleEl.value = title;
+    titleEl.dispatchEvent(new Event('change'));
 
-  noteEl.value = url;
-  noteEl.dispatchEvent(new Event('change'));
+    const noteEl = document.getElementById('note-text-editor');
+
+    noteEl.value = url;
+    noteEl.dispatchEvent(new Event('change'));
+  }, 600);
 });
